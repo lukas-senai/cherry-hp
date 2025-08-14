@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas - Clínica Médica</title>
+    <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>CherryHP</h2>
+            </div>
+            
+            <div class="sidebar-menu">
+                <div onclick="window.location.href = 'index.html'" class="menu-item" data-page="dashboard">
+                    <span>🏠</span> Dashboard
+                </div>
+                <div onclick="window.location.href = 'pacientes.html'" class="menu-item" data-page="pacientes">
+                    <span>👨‍👩‍👧‍👦</span> Pacientes
+                </div>
+                <div onclick="window.location.href = 'consultas.html'" class="menu-item active" data-page="consultas">
+                    <span>📅</span> Consultas
+                </div>
+                <div onclick="window.location.href = 'medicos.html'" class="menu-item" data-page="medicos">
+                    <span>👨‍⚕️</span> Médicos
+                </div>
+                <div onclick="window.location.href = 'prontuarios.html'" class="menu-item" data-page="prontuarios">
+                    <span>📋</span> Prontuários
+                </div>
+                <div onclick="window.location.href = 'financeiro.html'" class="menu-item" data-page="financeiro">
+                    <span>💰</span> Financeiro
+                </div>
+                <div onclick="window.location.href = 'configuracoes.html'" class="menu-item" data-page="configuracoes">
+                    <span>⚙️</span> Configurações
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>Agendamento de Consultas</h1>
+                <div class="user-info">
+                    <div class="user-avatar">AD</div>
+                    <span>Admin</span>
+                    <button class="logout-btn">Sair</button>
+                </div>
+            </div>
+            
+            <div class="page-title">
+                <h2>Gerenciamento de Consultas</h2>
+                <button class="btn btn-primary" id="nova-consulta-btn">Nova Consulta</button>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Calendário de Consultas</h3>
+                    <div class="view-options">
+                        <button class="btn active">Dia</button>
+                        <button class="btn">Semana</button>
+                        <button class="btn">Mês</button>
+                    </div>
+                </div>
+                
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="btn">◀</button>
+                        <h3>Maio 2023</h3>
+                        <button class="btn">▶</button>
+                    </div>
+                    
+                    <div class="calendar-weekdays">
+                        <div>Dom</div>
+                        <div>Seg</div>
+                        <div>Ter</div>
+                        <div>Qua</div>
+                        <div>Qui</div>
+                        <div>Sex</div>
+                        <div>Sáb</div>
+                    </div>
+                    
+                    <div class="calendar-days">
+                        <div class="day other-month">30</div>
+                        <div class="day">1</div>
+                        <div class="day">2</div>
+                        <div class="day today">
+                            <span>15</span>
+                            <div class="appointment">
+                                <small>09:00</small>
+                                <p>João Silva - Dra. Ana</p>
+                            </div>
+                            <div class="appointment">
+                                <small>14:30</small>
+                                <p>Maria Oliveira - Dr. Carlos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Consultas do Dia</h3>
+                    <div class="filter-options">
+                        <select>
+                            <option>Todos os médicos</option>
+                            <option>Dra. Ana Souza</option>
+                            <option>Dr. Carlos Mendes</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Paciente</th>
+                            <th>Médico</th>
+                            <th>Especialidade</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>09:00</td>
+                            <td>João Silva</td>
+                            <td>Dra. Ana Souza</td>
+                            <td>Cardiologia</td>
+                            <td><span class="status-badge confirmed">Confirmada</span></td>
+                            <td>
+                                <button class="btn btn-primary">Editar</button>
+                                <button class="btn btn-danger">Cancelar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10:30</td>
+                            <td>Maria Oliveira</td>
+                            <td>Dr. Carlos Mendes</td>
+                            <td>Pediatria</td>
+                            <td><span class="status-badge confirmed">Confirmada</span></td>
+                            <td>
+                                <button class="btn btn-primary">Editar</button>
+                                <button class="btn btn-danger">Cancelar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="nova-consulta-modal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <h3>Agendar Nova Consulta</h3>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="paciente-consulta">Paciente</label>
+                                <select id="paciente-consulta" required>
+                                    <option value="">Selecione um paciente</option>
+                                    <option value="1001">João Silva</option>
+                                    <option value="1002">Maria Oliveira</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="medico-consulta">Médico</label>
+                                <select id="medico-consulta" required>
+                                    <option value="">Selecione um médico</option>
+                                    <option value="1">Dra. Ana Souza - Cardiologia</option>
+                                    <option value="2">Dr. Carlos Mendes - Pediatria</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="data-consulta">Data</label>
+                                <input type="date" id="data-consulta" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="hora-consulta">Hora</label>
+                                <input type="time" id="hora-consulta" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="motivo-consulta">Motivo da Consulta</label>
+                            <textarea id="motivo-consulta"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-danger cancel-btn">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Agendar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../script.js"></script>
+    <script>
+        // Simular modal de nova consulta
+        document.getElementById('nova-consulta-btn').addEventListener('click', function() {
+            document.getElementById('nova-consulta-modal').style.display = 'block';
+        });
+        
+        document.querySelector('.cancel-btn').addEventListener('click', function() {
+            document.getElementById('nova-consulta-modal').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

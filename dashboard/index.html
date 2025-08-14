@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Clínica Médica</title>
+    <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>CherryHP</h2>
+            </div>
+
+            <div class="sidebar-menu">
+                <div onclick="window.location.href = 'index.html'" class="menu-item active" data-page="dashboard">
+                    <span>🏠</span> Dashboard
+                </div>
+                <div onclick="window.location.href = 'pacientes.html'" class="menu-item" data-page="pacientes">
+                    <span>👨‍👩‍👧‍👦</span> Pacientes
+                </div>
+                <div onclick="window.location.href = 'consultas.html'" class="menu-item" data-page="consultas">
+                    <span>📅</span> Consultas
+                </div>
+                <div onclick="window.location.href = 'medicos.html'" class="menu-item" data-page="medicos">
+                    <span>👨‍⚕️</span> Médicos
+                </div>
+                <div onclick="window.location.href = 'prontuarios.html'" class="menu-item" data-page="prontuarios">
+                    <span>📋</span> Prontuários
+                </div>
+                <div onclick="window.location.href = 'financeiro.html'" class="menu-item" data-page="financeiro">
+                    <span>💰</span> Financeiro
+                </div>
+                <div onclick="window.location.href = 'configuracoes.html'" class="menu-item" data-page="configuracoes">
+                    <span>⚙️</span> Configurações
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>Dashboard</h1>
+                <div class="user-info">
+                    <div class="user-avatar">AD</div>
+                    <span>Admin</span>
+                    <button class="logout-btn">Sair</button>
+                </div>
+            </div>
+            
+            <div class="page-title">
+                <h2>Visão Geral</h2>
+            </div>
+            
+            <div class="cards-row">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Consultas Hoje</h3>
+                        <span class="card-badge">15</span>
+                    </div>
+                    <p>Consultas agendadas para hoje</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Pacientes</h3>
+                        <span class="card-badge">1,245</span>
+                    </div>
+                    <p>Pacientes cadastrados</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Médicos</h3>
+                        <span class="card-badge">28</span>
+                    </div>
+                    <p>Médicos cadastrados</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Faturamento</h3>
+                        <span class="card-badge">R$ 120,450</span>
+                    </div>
+                    <p>Faturamento este mês</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Próximas Consultas</h3>
+                    <button class="btn btn-primary" onclick="window.location.href = 'consultas.html'">Ver Todas</button>
+                </div>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            <th>Paciente</th>
+                            <th>Médico</th>
+                            <th>Especialidade</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>09:00</td>
+                            <td>João Silva</td>
+                            <td>Dra. Ana Souza</td>
+                            <td>Cardiologia</td>
+                            <td><span class="status-badge confirmed">Confirmada</span></td>
+                        </tr>
+                        <tr>
+                            <td>10:30</td>
+                            <td>Maria Oliveira</td>
+                            <td>Dr. Carlos Mendes</td>
+                            <td>Pediatria</td>
+                            <td><span class="status-badge confirmed">Confirmada</span></td>
+                        </tr>
+                        <tr>
+                            <td>11:15</td>
+                            <td>Pedro Costa</td>
+                            <td>Dra. Fernanda Lima</td>
+                            <td>Ortopedia</td>
+                            <td><span class="status-badge pending">Pendente</span></td>
+                        </tr>
+                        <tr>
+                            <td>14:00</td>
+                            <td>Ana Paula</td>
+                            <td>Dr. Roberto Alves</td>
+                            <td>Dermatologia</td>
+                            <td><span class="status-badge canceled">Cancelada</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../script.js"></script>
+</body>
+</html>

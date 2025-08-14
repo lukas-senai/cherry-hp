@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financeiro - Clínica Médica</title>
+    <link rel="stylesheet" href="../estilo.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>CherryHP</h2>
+            </div>
+            
+            <div class="sidebar-menu">
+                <div onclick="window.location.href = 'index.html'" class="menu-item" data-page="dashboard">
+                    <span>🏠</span> Dashboard
+                </div>
+                <div onclick="window.location.href = 'pacientes.html'" class="menu-item" data-page="pacientes">
+                    <span>👨‍👩‍👧‍👦</span> Pacientes
+                </div>
+                <div onclick="window.location.href = 'consultas.html'" class="menu-item" data-page="consultas">
+                    <span>📅</span> Consultas
+                </div>
+                <div onclick="window.location.href = 'medicos.html'" class="menu-item" data-page="medicos">
+                    <span>👨‍⚕️</span> Médicos
+                </div>
+                <div onclick="window.location.href = 'prontuarios.html'" class="menu-item" data-page="prontuarios">
+                    <span>📋</span> Prontuários
+                </div>
+                <div onclick="window.location.href = 'financeiro.html'" class="menu-item active" data-page="financeiro">
+                    <span>💰</span> Financeiro
+                </div>
+                <div onclick="window.location.href = 'configuracoes.html'" class="menu-item" data-page="configuracoes">
+                    <span>⚙️</span> Configurações
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h1>Controle Financeiro</h1>
+                <div class="user-info">
+                    <div class="user-avatar">AD</div>
+                    <span>Admin</span>
+                    <button class="logout-btn">Sair</button>
+                </div>
+            </div>
+            
+            <div class="page-title">
+                <h2>Gestão Financeira</h2>
+                <div class="time-filter">
+                    <select>
+                        <option>Hoje</option>
+                        <option>Esta semana</option>
+                        <option selected>Este mês</option>
+                        <option>Este ano</option>
+                        <option>Período personalizado</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="cards-row">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Receitas</h3>
+                        <span class="card-badge positive">R$ 85,420</span>
+                    </div>
+                    <p>Total recebido este mês</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Despesas</h3>
+                        <span class="card-badge negative">R$ 32,150</span>
+                    </div>
+                    <p>Total gasto este mês</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Lucro</h3>
+                        <span class="card-badge positive">R$ 53,270</span>
+                    </div>
+                    <p>Lucro líquido este mês</p>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Pendentes</h3>
+                        <span class="card-badge warning">R$ 12,800</span>
+                    </div>
+                    <p>Pagamentos em aberto</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Transações Recentes</h3>
+                    <button class="btn btn-primary">Nova Transação</button>
+                </div>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Descrição</th>
+                            <th>Paciente</th>
+                            <th>Médico</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>15/05/2023</td>
+                            <td>Consulta Cardiologia</td>
+                            <td>João Silva</td>
+                            <td>Dra. Ana Souza</td>
+                            <td>R$ 350,00</td>
+                            <td><span class="status-badge paid">Pago</span></td>
+                            <td>
+                                <button class="btn btn-primary">Recibo</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>14/05/2023</td>
+                            <td>Exame Ecocardiograma</td>
+                            <td>Maria Oliveira</td>
+                            <td>Dra. Ana Souza</td>
+                            <td>R$ 580,00</td>
+                            <td><span class="status-badge pending">Pendente</span></td>
+                            <td>
+                                <button class="btn btn-primary">Cobrar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Relatórios Financeiros</h3>
+                </div>
+                
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <h4>Fluxo de Caixa</h4>
+                        <p>Análise mensal de entradas e saídas</p>
+                        <button class="btn">Gerar</button>
+                    </div>
+                    <div class="report-card">
+                        <h4>Faturamento por Médico</h4>
+                        <p>Desempenho financeiro por profissional</p>
+                        <button class="btn">Gerar</button>
+                    </div>
+                    <div class="report-card">
+                        <h4>Contas a Receber</h4>
+                        <p>Pagamentos pendentes e vencidos</p>
+                        <button class="btn">Gerar</button>
+                    </div>
+                    <div class="report-card">
+                        <h4>Despesas Detalhadas</h4>
+                        <p>Análise de custos operacionais</p>
+                        <button class="btn">Gerar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../script.js"></script>
+</body>
+</html>

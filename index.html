@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Médica - Login</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <img src="https://via.placeholder.com/100" alt="Logo da Clínica">
+            <h1>CherryHP</h1>
+            <p>Sistema de Gestão Médica</p>
+        </div>
+        
+        <form id="login-form" class="login-form">
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" placeholder="Digite seu usuário" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" placeholder="Digite sua senha" required>
+            </div>
+            
+            <div class="form-options">
+                <label>
+                    <input type="checkbox"> Lembrar-me
+                </label>
+                <a href="#" class="forgot-password">Esqueci minha senha</a>
+            </div>
+            
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+        
+        <div class="login-footer">
+            <p>Versão 1.0.0 - © 2023 CherryHP</p>
+            <p>Suporte: suporte@cherryhp.com.br</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
