@@ -5,6 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financeiro - Clínica Médica</title>
     <link rel="stylesheet" href="../estilo.css">
+    <style>
+        /* Novos estilos para a tela de financeiro */
+        .finance-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .stat-trend {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .trend-up {
+            color: #2ecc71;
+        }
+        
+        .trend-down {
+            color: #e74c3c;
+        }
+        
+        .filters-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 180px;
+        }
+        
+        .filter-group label {
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .report-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .report-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .report-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .report-card p {
+            color: #7f8c8d;
+            font-size: 14px;
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+        
+        .export-options {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .btn-icon {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .payment-actions {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        
+        .status-badge.paid {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-badge.pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-badge.overdue {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        @media (max-width: 768px) {
+            .finance-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filters-container {
+                flex-direction: column;
+            }
+            
+            .reports-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* BUG INTENCIONAL: Estilo para o botão problemático */
+        .btn-bug {
+            background-color: #ff6b6b;
+            border-color: #ff6b6b;
+        }
+        
+        .btn-bug:hover {
+            background-color: #ee5a5a;
+            border-color: #ee5a5a;
+        }
+    </style>
 </head>
 <body>
     <div class="dashboard-container">
@@ -48,10 +219,10 @@
                 </div>
             </div>
             
-            <div class="page-title">
+            <div class="finance-header">
                 <h2>Gestão Financeira</h2>
                 <div class="time-filter">
-                    <select>
+                    <select id="timeRange">
                         <option>Hoje</option>
                         <option>Esta semana</option>
                         <option selected>Este mês</option>
@@ -61,44 +232,93 @@
                 </div>
             </div>
             
-            <div class="cards-row">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Receitas</h3>
-                        <span class="card-badge positive">R$ 85,420</span>
-                    </div>
-                    <p>Total recebido este mês</p>
+            <!-- Estatísticas financeiras -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Receitas</h3>
+                    <div class="stat-value">R$ 85.420</div>
+                    <div class="stat-trend trend-up">+12% vs mês anterior</div>
                 </div>
                 
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Despesas</h3>
-                        <span class="card-badge negative">R$ 32,150</span>
-                    </div>
-                    <p>Total gasto este mês</p>
+                <div class="stat-card">
+                    <h3>Despesas</h3>
+                    <div class="stat-value">R$ 32.150</div>
+                    <div class="stat-trend trend-down">-5% vs mês anterior</div>
                 </div>
                 
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Lucro</h3>
-                        <span class="card-badge positive">R$ 53,270</span>
-                    </div>
-                    <p>Lucro líquido este mês</p>
+                <div class="stat-card">
+                    <h3>Lucro Líquido</h3>
+                    <div class="stat-value">R$ 53.270</div>
+                    <div class="stat-trend trend-up">+18% vs mês anterior</div>
                 </div>
                 
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Pendentes</h3>
-                        <span class="card-badge warning">R$ 12,800</span>
-                    </div>
-                    <p>Pagamentos em aberto</p>
+                <div class="stat-card">
+                    <h3>Pendentes</h3>
+                    <div class="stat-value">R$ 12.800</div>
+                    <div class="stat-trend trend-down">-8% vs mês anterior</div>
                 </div>
+            </div>
+            
+            <!-- Filtros -->
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="tipoFilter">Tipo</label>
+                    <select id="tipoFilter">
+                        <option value="">Todos</option>
+                        <option value="receita">Receitas</option>
+                        <option value="despesa">Despesas</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="categoriaFilter">Categoria</label>
+                    <select id="categoriaFilter">
+                        <option value="">Todas</option>
+                        <option value="consulta">Consultas</option>
+                        <option value="exame">Exames</option>
+                        <option value="procedimento">Procedimentos</option>
+                        <option value="material">Materiais</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="statusFilter">Status</label>
+                    <select id="statusFilter">
+                        <option value="">Todos</option>
+                        <option value="pago">Pago</option>
+                        <option value="pendente">Pendente</option>
+                        <option value="atrasado">Atrasado</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label>&nbsp;</label>
+                    <button class="btn" id="applyFilters">Aplicar Filtros</button>
+                </div>
+            </div>
+            
+            <!-- Opções de exportação -->
+            <div class="export-options">
+                <button class="btn btn-icon" onclick="exportData('excel')">
+                    📊 Exportar para Excel
+                </button>
+                <button class="btn btn-icon" onclick="exportData('pdf')">
+                    📄 Exportar para PDF
+                </button>
+                <button class="btn btn-icon" onclick="exportData('csv')">
+                    📋 Exportar para CSV
+                </button>
+                
+                <!-- BUG INTENCIONAL: Botão que leva para página 404 -->
+                <button class="btn btn-icon" onclick="openDetailedReport()">
+                    📈 Relatório Detalhado
+                </button>
             </div>
             
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Transações Recentes</h3>
-                    <button class="btn btn-primary">Nova Transação</button>
+                    <button class="btn btn-primary" onclick="openNewTransaction()">Nova Transação</button>
                 </div>
                 
                 <table class="table">
@@ -121,8 +341,9 @@
                             <td>Dra. Ana Souza</td>
                             <td>R$ 350,00</td>
                             <td><span class="status-badge paid">Pago</span></td>
-                            <td>
-                                <button class="btn btn-primary">Recibo</button>
+                            <td class="payment-actions">
+                                <button class="btn btn-primary btn-sm" onclick="viewReceipt(1001)">Recibo</button>
+                                <button class="btn btn-sm" onclick="editTransaction(1001)">Editar</button>
                             </td>
                         </tr>
                         <tr>
@@ -132,8 +353,33 @@
                             <td>Dra. Ana Souza</td>
                             <td>R$ 580,00</td>
                             <td><span class="status-badge pending">Pendente</span></td>
-                            <td>
-                                <button class="btn btn-primary">Cobrar</button>
+                            <td class="payment-actions">
+                                <button class="btn btn-primary btn-sm" onclick="sendReminder(1002)">Cobrar</button>
+                                <button class="btn btn-sm" onclick="editTransaction(1002)">Editar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10/05/2023</td>
+                            <td>Consulta Pediatria</td>
+                            <td>Pedro Costa</td>
+                            <td>Dr. Carlos Mendes</td>
+                            <td>R$ 280,00</td>
+                            <td><span class="status-badge overdue">Atrasado</span></td>
+                            <td class="payment-actions">
+                                <button class="btn btn-primary btn-sm" onclick="sendReminder(1003)">Cobrar</button>
+                                <button class="btn btn-sm" onclick="editTransaction(1003)">Editar</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>08/05/2023</td>
+                            <td>Raio-X</td>
+                            <td>Ana Paula</td>
+                            <td>Dra. Fernanda Lima</td>
+                            <td>R$ 120,00</td>
+                            <td><span class="status-badge paid">Pago</span></td>
+                            <td class="payment-actions">
+                                <button class="btn btn-primary btn-sm" onclick="viewReceipt(1004)">Recibo</button>
+                                <button class="btn btn-sm" onclick="editTransaction(1004)">Editar</button>
                             </td>
                         </tr>
                     </tbody>
@@ -148,23 +394,23 @@
                 <div class="reports-grid">
                     <div class="report-card">
                         <h4>Fluxo de Caixa</h4>
-                        <p>Análise mensal de entradas e saídas</p>
-                        <button class="btn">Gerar</button>
+                        <p>Análise mensal de entradas e saídas com gráficos comparativos</p>
+                        <button class="btn" onclick="generateReport('cashflow')">Gerar</button>
                     </div>
                     <div class="report-card">
                         <h4>Faturamento por Médico</h4>
-                        <p>Desempenho financeiro por profissional</p>
-                        <button class="btn">Gerar</button>
+                        <p>Desempenho financeiro por profissional e especialidade</p>
+                        <button class="btn" onclick="generateReport('doctors')">Gerar</button>
                     </div>
                     <div class="report-card">
                         <h4>Contas a Receber</h4>
-                        <p>Pagamentos pendentes e vencidos</p>
-                        <button class="btn">Gerar</button>
+                        <p>Pagamentos pendentes e vencidos com datas de vencimento</p>
+                        <button class="btn" onclick="generateReport('receivables')">Gerar</button>
                     </div>
                     <div class="report-card">
                         <h4>Despesas Detalhadas</h4>
-                        <p>Análise de custos operacionais</p>
-                        <button class="btn">Gerar</button>
+                        <p>Análise de custos operacionais por categoria e fornecedor</p>
+                        <button class="btn" onclick="generateReport('expenses')">Gerar</button>
                     </div>
                 </div>
             </div>
@@ -172,5 +418,83 @@
     </div>
     
     <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filtros
+            const applyFiltersBtn = document.getElementById('applyFilters');
+            applyFiltersBtn.addEventListener('click', function() {
+                const tipo = document.getElementById('tipoFilter').value;
+                const categoria = document.getElementById('categoriaFilter').value;
+                const status = document.getElementById('statusFilter').value;
+                
+                showNotification(`Filtros aplicados: Tipo=${tipo}, Categoria=${categoria}, Status=${status}`, 'info');
+            });
+            
+            // Filtro de tempo
+            const timeRange = document.getElementById('timeRange');
+            timeRange.addEventListener('change', function() {
+                showNotification(`Período alterado para: ${this.options[this.selectedIndex].text}`, 'info');
+            });
+        });
+        
+        // Funções de negócio
+        function exportData(format) {
+            if (format === 'pdf') {
+                showNotification(`Erro ao exportar dados em formato ${format.toUpperCase()}...`, 'error');
+                return;
+            }
+            showNotification(`Exportando dados em formato ${format.toUpperCase()}...`, 'info');
+            // Em sistema real, faria a exportação dos dados
+        }
+        
+        function openNewTransaction() {
+            showNotification('Abrindo formulário para nova transação...', 'info');
+            // Em sistema real, abriria um modal ou nova página
+        }
+        
+        function viewReceipt(transactionId) {
+            showNotification(`Gerando recibo da transação ${transactionId}...`, 'info');
+            // Em sistema real, geraria um PDF do recibo
+        }
+        
+        function sendReminder(transactionId) {
+            showNotification(`Enviando lembrete para transação ${transactionId}...`, 'info');
+            // Em sistema real, enviaria email/SMS de cobrança
+        }
+        
+        function editTransaction(transactionId) {
+            showNotification(`Editando transação ${transactionId}...`, 'info');
+            // Em sistema real, abriria formulário de edição
+        }
+        
+        function generateReport(type) {
+            const reportNames = {
+                'cashflow': 'Fluxo de Caixa',
+                'doctors': 'Faturamento por Médico',
+                'receivables': 'Contas a Receber',
+                'expenses': 'Despesas Detalhadas'
+            };
+            
+            showNotification(`Gerando relatório de ${reportNames[type]}...`, 'info');
+            // Em sistema real, geraria o relatório solicitado
+        }
+        
+        // BUG INTENCIONAL: Função que redireciona para página 404
+        function openDetailedReport() {
+            showNotification('Acessando relatório detalhado...', 'info');
+            
+            // BUG: Redirecionamento para página que não existe
+            // Em um sistema real, esta URL seria válida e apontaria para o relatório
+            setTimeout(() => {
+                window.location.href = '../404.html';
+            }, 1000);
+        }
+        
+        // Função de notificação
+        function showNotification(message, type) {
+            // Implementação simples para demonstração
+            alert(`${type.toUpperCase()}: ${message}`);
+        }
+    </script>
 </body>
 </html>
