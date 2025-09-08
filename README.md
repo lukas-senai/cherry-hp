@@ -1,6 +1,8 @@
 # Cherry HP
 # Sistema de Clínica Médica - Simulador Visual
 
+[cherry-hp](https://lukas-senai.github.io/cherry-hp)
+
 ## 📝 Descrição
 
 Este projeto é um **simulador visual não-funcional** de um sistema de gestão para clínica médica. Criado para fins didáticos.
@@ -55,3 +57,4 @@ Ideal para estudar:
 - Implantação de Sistemas
 
 *Nota: Todos os dados exibidos são fictícios.*
+
