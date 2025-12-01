@@ -220,8 +220,7 @@
                 align-self: flex-end;
             }
         }
-        
-        /* BUG INTENCIONAL: Estilos problemáticos */
+
         .conflicting-style {
             background-color: #ffcccc !important;
             border: 2px dashed red !important;
@@ -414,8 +413,7 @@
                                 <button class="btn btn-sm" onclick="rescheduleAppointment(1003)">Reagendar</button>
                             </div>
                         </div>
-                        
-                        <!-- BUG INTENCIONAL: Estilo problemático aplicado -->
+
                         <div class="time-slot canceled">
                             <span>11:00 - 11:30</span>
                             <span>Disponível</span>
@@ -717,9 +715,6 @@
                 `;
                 
                 consultationModal.style.display = 'flex';
-                
-                // BUG INTENCIONAL: Foco não está sendo colocado no primeiro campo
-                // document.getElementById('paciente-consulta').focus(); // Esta linha está comentada de propósito
             });
             
             // Inicialização
@@ -762,14 +757,13 @@
             // Em sistema real, usaria um sistema de notificação mais sofisticado
             alert(`${type.toUpperCase()}: ${message}`);
         }
-        
-        // BUG INTENCIONAL: Conflito de agendamento não detectado
+
         function checkSchedulingConflict(doctorId, date, time) {
             // Esta função deveria verificar se já existe uma consulta marcada
             // para o mesmo médico no mesmo horário, mas intencionalmente
             // não está implementada corretamente
             console.log("Verificação de conflito ignorada intencionalmente");
-            return false; // Sempre retorna falso (bug)
+            return false;
         }
         
         // Fechar modal ao clicar fora

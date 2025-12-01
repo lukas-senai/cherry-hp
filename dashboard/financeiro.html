@@ -164,8 +164,7 @@
                 grid-template-columns: 1fr;
             }
         }
-        
-        /* BUG INTENCIONAL: Estilo para o botão problemático */
+
         .btn-bug {
             background-color: #ff6b6b;
             border-color: #ff6b6b;
@@ -308,8 +307,7 @@
                 <button class="btn btn-icon" onclick="exportData('csv')">
                     📋 Exportar para CSV
                 </button>
-                
-                <!-- BUG INTENCIONAL: Botão que leva para página 404 -->
+
                 <button class="btn btn-icon" onclick="openDetailedReport()">
                     📈 Relatório Detalhado
                 </button>
@@ -478,13 +476,10 @@
             showNotification(`Gerando relatório de ${reportNames[type]}...`, 'info');
             // Em sistema real, geraria o relatório solicitado
         }
-        
-        // BUG INTENCIONAL: Função que redireciona para página 404
+
         function openDetailedReport() {
             showNotification('Acessando relatório detalhado...', 'info');
-            
-            // BUG: Redirecionamento para página que não existe
-            // Em um sistema real, esta URL seria válida e apontaria para o relatório
+
             setTimeout(() => {
                 window.location.href = '../404.html';
             }, 1000);
